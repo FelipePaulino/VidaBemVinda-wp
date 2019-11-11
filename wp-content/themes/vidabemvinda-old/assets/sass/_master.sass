@@ -1,0 +1,484 @@
+@import "bourbon/bourbon"
+@import "neat/neat"
+
+//  FONTS
+@include font-face("LibreFranklin-Light", "fonts/LibreFranklin-Light")
+@include font-face("LibreFranklin-Regular", "fonts/LibreFranklin-Regular")
+@include font-face("LibreFranklin-Bold", "fonts/LibreFranklin-Bold")
+@include font-face("LibreFranklin-ExtraBold", "fonts/LibreFranklin-ExtraBold")
+//@include font-face("Oswald-Regular", "fonts/Oswald-Regular")
+
+
+$fontLight: "LibreFranklin-Light"
+$fontRegular: "LibreFranklin-Regular"
+$fontBold: "LibreFranklin-Bold"
+$fontExtraBold: "LibreFranklin-ExtraBold"
+
+
+// VARIABLES
+
+
+
+//  COLORS
+$white: #ffffff
+$black: #000000
+$blue: #282d58
+$lightBlue: #6ab8ff
+$gray: #707070
+$lightGray: #f2f4f6
+// EXTENDS CLASSES
+.hide
+	opacity: 0
+	visibility: hidden
+.show
+	opacity: 1
+	visibility: visible
+.transDefault
+	@include transition(all .2s ease-out);
+.circle
+	@include border-top-radius(50%)
+	@include border-bottom-radius(50%)
+.blockCenter
+	margin-left: auto
+	margin-right: auto
+.fleft
+	float: left
+.fright
+	float: right
+.clearfix
+	clear: both
+.borderFive
+	@include border-top-radius(10px)
+	@include border-bottom-radius(10px)
+
+
+//  RESPONSIVE GRID
+$desktop-lg: new-breakpoint(min-width 993px 16)
+$desktop-md: new-breakpoint(max-width 992px 12)
+$tablet: new-breakpoint(max-width 768px 10)
+$mobile: new-breakpoint(max-width 480px 8)
+
+.gridE
+	width: 90%
+	@extend .blockCenter
+
+.gridD
+	max-width: 960px
+	@extend .blockCenter
+
+// RESET
+
+*
+	margin: 0
+	padding: 0
+html
+	height: 100%
+	object
+		display: none
+body
+	position: relative
+	overflow-x: hidden
+	font-family: $fontRegular
+a
+	text-decoration: none
+a, button, input, textarea
+	outline: none
+
+section
+	height: 100%
+	//height: 100vh
+// MSG IE
+.msgUpdateIE
+	display: none
+img
+	border: 0
+p
+	line-height: 24px
+	font-size: 13px
+	color: $gray
+
+	
+::-webkit-scrollbar
+  width: 10px;
+  height: 10px;
+  background: $white
+
+::-webkit-scrollbar-thumb
+  cursor: pointer;
+  background: $lightBlue;
+  @include border-top-radius(10px)
+  @include border-bottom-radius(10px)
+
+
+ 
+// HEADER FULL MAIN //
+
+#headerMain
+	position: relative
+	z-index: 9
+	+media($mobile)
+		position: fixed
+		top: 0
+		background-color: $white
+		z-index: 99
+	.top-info
+		padding: 25px 0
+		height: 120px
+		+media($mobile)
+			padding: 15px 0
+			height: 80px
+			-webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3)
+			-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3)
+			box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3)
+		.logo
+			+span-columns(3)
+			a
+				border: 0
+			img
+				max-width: 100%
+			+media($mobile)
+				+span-columns(5)
+				padding: 0px 10px
+				img
+					max-width: 100%
+		.adress-top
+			+span-columns(6)
+			padding: 10px 0 0 40px
+			+media($mobile)
+				display: none
+			.topic-adress
+				float: left
+				.icon-adress
+					float: left
+					background: #6ab8ff
+					@extend .circle
+					+size(45px 45px)
+					padding: 14px 16px
+					margin-right: 15px
+					+transition(all .4s ease)
+					i
+						color: $white
+				.desc-adress
+					float: left
+					p.title
+						color: $gray
+						font-size: 16px
+					p
+						color: $blue
+						font-size: 13px
+				&:nth-of-type(2)
+					p
+						margin-top: 10px
+				&:first-child
+					margin-right: 50px
+				&:last-child
+					.icon-adress
+						padding: 13px 16px
+						i
+							font-size: 14px
+				&:hover
+					.icon-adress
+						+transform(rotate(360deg))
+						-webkit-box-shadow: 0px 3px 1px 0px rgba(0,0,0,0.4)
+						-moz-box-shadow: 0px 3px 1px 0px rgba(0,0,0,0.4)
+						box-shadow: 0px 3px 1px 0px rgba(0,0,0,0.4)
+		.social-header
+			margin: 20px auto 0
+			+span-columns(2)
+			.icon-header
+				background-color: #282d58
+				@extend .circle
+				+size(30px 30px)
+				margin-right: 10px
+				float: left
+				a
+					color: $white
+					@extend .circle
+					font-size: 15px
+					+transition(all .2s ease)
+				&:nth-of-type(1)
+					padding: 5px 10px
+				&:nth-of-type(2)
+					padding: 5px 7px
+				&:nth-of-type(3)
+					padding: 5px 9px
+			+media($mobile)
+				display: none
+		.btn-mobile
+			color: $white
+			font-size: 26px
+			+span-columns(4)
+			color: $blue
+			display: none
+			float: right
+			text-align: right
+			padding: 10px 20px
+			+media($mobile)
+				display: block
+	#navMain
+		+size(100% 65px)
+		background-color: $blue
+		+transition(all .2s ease .4s)
+		&.fixed
+			position: fixed
+			top: 0
+			z-index: 999
+		nav
+			position: relative
+			ul
+				display: block
+				li
+					display: inline-block
+					list-style-type: none
+					padding: 23px 10px
+					position: relative
+					.icon-nav
+						+position(relative, 0 0 null null)
+						color: $white
+						float: right
+						margin-left: 8px
+						font-size: 14px
+					a
+						color: $white
+						font-size: 14px
+						text-transform: uppercase
+						+transition(all .2s ease)
+						&:hover
+							color: $lightBlue
+					&:last-child
+						margin-left: 100px
+						padding: 23px 20px
+						background-color: $lightBlue
+						a
+							padding: 24px 25px
+							i
+								margin-right: 10px
+								+transition(all .2s ease)
+							&:hover
+								color: $white
+								i
+									color: $blue
+					.sub-nav
+						+position(absolute, 60px null null 0)
+						+size(170px auto)
+						background-color: $lightBlue
+						+border-bottom-radius(10px)
+						+transition(all .2s ease)
+						opacity: 0
+						visibility: hidden
+						li
+							+size(100% auto)
+							padding: 15px 20px
+							border-bottom: 1px solid rgba(255, 255, 255, 0.15)
+							a
+								color: $white
+								font-size: 14px
+								text-transform: uppercase
+								+transition(all .2s ease)
+								&:hover
+									color: $blue
+							&:last-child
+								margin-left: 0
+								padding: 23px 10px
+								background-color: transparent
+								border-bottom: 0
+								a
+									+transition(all .2s ease)
+									padding: 0 8px
+									&:hover
+										color: $blue
+						+media($mobile)
+							+size(200px auto)
+							background-color: $lightBlue
+							+border-bottom-radius(0)
+							+border-top-radius(0)
+							+transition(all .2s ease)
+							opacity: 0
+							visibility: hidden
+							z-index: 9
+							top: -70px !important
+							position: absolute
+							left: 200px
+							li
+								+size(100% auto)
+								padding: 15px 20px
+								border-bottom: 0 solid rgba(255, 255, 255, 0.15)
+								a
+									color: $white
+									font-size: 12px
+									text-transform: capitalize
+									+transition(all .2s ease)
+									font-weight: 200
+									&:hover
+										color: $blue
+								&:last-child
+									margin-left: 0
+									padding: 23px 10px
+									background-color: transparent
+									border-bottom: 0
+									a
+										+transition(all .2s ease)
+										padding: 0 8px
+										&:hover
+											color: $blue
+					&:hover
+						.sub-nav
+							opacity: 1
+							visibility: visible
+							top: 65px
+					&.sub-nav-mobile.active-sub
+						.sub-nav
+							left: 20px
+			.social-header
+			.btn-close
+				display: none
+				+position(absolute, -20px 20px null null)
+				color: $lightBlue
+				font-size: 20px
+				+media($mobile)
+					display: block
+		+media($mobile)
+			+position(absolute, 0 -200px null null)
+			height: auto;
+			width: 200px
+			padding: 30px 0 30px
+			background-color: rgba($blue, .97)
+			z-index: 99
+			nav
+				ul
+					li
+						+span-columns(12)
+						padding: 10px 25px
+						.icon-nav
+							+position(relative, 0 0 null null)
+							color: $white
+							float: right
+							margin-left: 8px
+							font-size: 14px
+							width: 160px
+						a
+							font-size: 14px
+							font-weight: bold;
+						&:last-child
+							margin-left: 0
+							padding: 23px 10px
+							background-color: transparent
+							border-bottom: 0
+							display: none
+							a
+								+transition(all .2s ease)
+								padding: 0 8px
+								&:hover
+									color: $blue
+						
+.overlay-body
+	+position(fixed, 0 0 0 0)
+	+size(100% 0)
+	background-color: rgba($black, .7)
+	z-index: 98
+	opacity: 0
+	visibility: hidden
+	+transition(all .3s ease)
+.nav-opened
+	#navMain
+		right: 0 !important
+	.overlay-body
+		opacity: 1
+		visibility: visible
+		height: 100%
+footer
+	background-color: $blue
+	padding: 90px 0 0
+	.topic-footer
+		+span-columns(3)
+		.logo-footer
+			margin: 20px auto
+			img
+				max-width: 100%
+			+media($mobile)
+				+span-columns(8)
+		.desc-footer
+			p
+				margin-bottom: 20px
+				color: $white
+				font-size: 12px
+			+media($mobile)
+				+span-columns(8)
+		.social-footer
+			margin: 30px auto 0
+			a
+				color: #858bb6
+				font-size: 26px
+				+transition(all .2s ease)
+				margin-right: 15px
+				&:hover
+					color: $white
+			+media($mobile)
+				+span-columns(8)
+		+media($mobile)
+			+span-columns(8)
+			padding: 0 20px
+	.nav-footer-four
+		+span-columns(3)
+		h2
+			text-transform: uppercase
+			color: $white
+			font-size: 20px
+			font-weight: 200
+			padding: 15px 0
+			border-bottom: 2px solid rgba($white, .1)
+		ul
+			margin-top: 15px
+			li
+				list-style-type: none
+				line-height: 24px
+				a
+					margin-bottom: 20px
+					color: $white
+					font-size: 12px
+				&.first
+					a
+						color: $lightBlue
+						text-transform: uppercase
+		+media($mobile)
+			+span-columns(8)
+			padding: 0 20px
+	.copyright
+		+size(100% 90px)
+		background-color: $white
+		margin-top: 90px
+		.left
+			+span-columns(6)
+			padding-top: 40px
+			p
+				color: #858bb6
+				span
+					margin: 0 10px
+			+media($mobile)
+				+span-columns(8)
+				padding: 20px 20px 0
+				text-align: center
+		.right
+			+span-columns(6)
+			.nav-copyright
+				ul
+					display: block
+					padding-top: 40px
+					text-align: right
+					li
+						display: inline-block
+						list-style: none
+						margin: 0 15px
+						a
+							color: $blue
+							font-size: 13px
+							text-transform: uppercase
+			+media($mobile)
+				+span-columns(8)
+				padding: 0 20px 20px
+				ul
+					text-align: center !important
+
+
+
+	
